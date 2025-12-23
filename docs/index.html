@@ -1,286 +1,372 @@
-import React, { useState } from 'react';
-import { 
-  Instagram, 
-  Send, 
-  Phone, 
-  Mail, 
-  CheckCircle2, 
-  Star, 
-  Award, 
-  Gem,
-  ArrowRight,
-  ArrowLeft,
-  Video,
-  Target,
-  Layout,
-  Hash,
-  TrendingUp,
-  Clock,
-  Clapperboard,
-  Camera,
-  Zap
-} from 'lucide-react';
-
-const App = () => {
-  // استخدام رابط الصورة المرفوعة
-  const logoSrc = "IMG_2601.jpeg";
-
-  const packages = [
-    {
-      title: "الباقة الفضية",
-      price: "2,000",
-      color: "from-slate-400 to-slate-200",
-      icon: <Award className="w-8 h-8 text-slate-300" />,
-      features: [
-        "تقييم أولي للوضع الحالي للحساب",
-        "رسم استراتيجية محتوى أساسية",
-        "تصميم ونشر 12 منشور شهرياً",
-        "كتابة المحتوى الإبداعي (Captions)",
-        "إدارة الحملات الإعلانية الممولة (إدارة فقط)",
-        "تقرير أداء شهري مبسط",
-        "المنصات: Instagram"
-      ]
-    },
-    {
-      title: "الباقة الذهبية",
-      price: "3,500",
-      color: "from-amber-500 to-yellow-200",
-      icon: <Star className="w-8 h-8 text-amber-400" />,
-      features: [
-        "جميع مميزات الباقة الفضية",
-        "دراسة وتحليل للمنافسين",
-        "تصميم ونشر 18 منشور شهرياً (صور وفيديو)",
-        "خطة تسويقية شهرية + تقويم نشر",
-        "إدارة الردود والتعليقات الأساسية",
-        "المنصات: Instagram + TikTok"
-      ]
-    },
-    {
-      title: "الباقة الماسية",
-      price: "4,000",
-      color: "from-cyan-400 to-blue-200",
-      icon: <Gem className="w-8 h-8 text-cyan-300" />,
-      features: [
-        "جميع مميزات الباقة الذهبية",
-        "خطة استراتيجية شاملة ومتقدمة",
-        "تصميم ونشر 24 منشور شهرياً",
-        "تصاميم احترافية للقصص والهايلايت",
-        "تقرير شهري تفصيلي مع توصيات",
-        "إدارة كاملة للمنصات (تفاعل ونشر)",
-        "المنصات: حتى 3 منصات"
-      ]
-    }
-  ];
-
-  const services = [
-    { icon: <Camera className="w-6 h-6" />, title: "تصوير احترافي", desc: "جودة 4K سينمائية" },
-    { icon: <Clapperboard className="w-6 h-6" />, title: "إخراج فني", desc: "رؤية إبداعية فريدة" },
-    { icon: <Video className="w-6 h-6" />, title: "فيديوهات قصيرة", desc: "Reels & TikTok" },
-    { icon: <Hash className="w-6 h-6" />, title: "هاشتاجات ذكية", desc: "ظهور في الـ Explore" },
-    { icon: <TrendingUp className="w-6 h-6" />, title: "تحليل الترندات", desc: "مواكبة السوق" },
-    { icon: <Clock className="w-6 h-6" />, title: "جدولة ونشر", desc: "في أوقات الذروة" }
-  ];
-
-  return (
-    <div dir="rtl" className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-amber-500 selection:text-black">
-      
-      {/* Page 1: Hero Section */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden border-b border-neutral-800 px-4">
-        <div className="absolute inset-0 bg-gradient-to-b from-neutral-900/50 to-transparent z-0"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-neutral-100/5 rounded-full blur-[120px] pointer-events-none"></div>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Double M Studio | الملف التعريفي</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100;300;400;700;900&display=swap');
         
-        <div className="z-10 text-center space-y-6 flex flex-col items-center">
-          <div className="mb-6 relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-amber-500 to-neutral-200 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-            <img 
-              src={logoSrc} 
-              alt="Double M Studio Logo" 
-              className="relative w-32 h-32 md:w-40 md:h-40 object-contain rounded-full border border-neutral-800 bg-black shadow-2xl"
-              onError={(e) => { e.target.style.display = 'none'; }}
-            />
-          </div>
+        body {
+            font-family: 'Noto Sans Arabic', sans-serif;
+        }
 
-          <div className="inline-block px-4 py-1 border border-neutral-700 rounded-full text-xs tracking-widest text-neutral-400 uppercase bg-neutral-900/50 backdrop-blur-sm mb-2">
-            نروي قصتك بأسلوب سينمائي
-          </div>
-          <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-neutral-100 via-neutral-400 to-neutral-100">
-            Double M Studio
-          </h1>
-          <p className="text-xl md:text-2xl text-neutral-400 font-light max-w-2xl mx-auto leading-relaxed">
-            التسويق، الإخراج السينمائي، وإدارة المحتوى الرقمي الفاخرة
-          </p>
-          <div className="pt-10 flex flex-col md:flex-row gap-4 justify-center items-center">
-            <button className="px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-neutral-200 transition-all flex items-center gap-2 transform hover:scale-105 shadow-xl shadow-white/10">
-              تصفح باقاتنا <ArrowLeft className="w-4 h-4" />
-            </button>
-          </div>
+        .glass-effect {
+            background: rgba(23, 23, 23, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-neutral-950 text-white selection:bg-amber-500 selection:text-black overflow-x-hidden">
+
+    <!-- Page 1: Hero Section -->
+    <section class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden border-b border-neutral-800 px-4">
+        <div class="absolute inset-0 bg-gradient-to-b from-neutral-900/50 to-transparent z-0"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-neutral-100/5 rounded-full blur-[120px] pointer-events-none"></div>
+        
+        <div class="z-10 text-center space-y-6 flex flex-col items-center">
+            <!-- Logo Container -->
+            <div class="mb-6 relative group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-amber-500 to-neutral-200 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                <img 
+                    src="IMG_2601.jpeg" 
+                    alt="Double M Studio Logo" 
+                    class="relative w-32 h-32 md:w-40 md:h-40 object-contain rounded-full border border-neutral-800 bg-black shadow-2xl"
+                    onerror="this.style.display='none'"
+                >
+            </div>
+
+            <div class="inline-block px-4 py-1 border border-neutral-700 rounded-full text-xs tracking-widest text-neutral-400 uppercase glass-effect mb-2">
+                نروي قصتك بأسلوب سينمائي
+            </div>
+            
+            <h1 class="text-6xl md:text-8xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-neutral-100 via-neutral-400 to-neutral-100">
+                Double M Studio
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-neutral-400 font-light max-w-2xl mx-auto leading-relaxed">
+                التسويق، الإخراج السينمائي، وإدارة المحتوى الرقمي الفاخرة
+            </p>
+            
+            <div class="pt-10">
+                <a href="#packages" class="px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-neutral-200 transition-all flex items-center gap-2 transform hover:scale-105 shadow-xl shadow-white/10">
+                    تصفح باقاتنا <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                </a>
+            </div>
         </div>
         
-        <div className="absolute bottom-10 animate-bounce">
-          <div className="w-6 h-10 border-2 border-neutral-700 rounded-full flex justify-center p-1">
-            <div className="w-1 h-2 bg-neutral-500 rounded-full"></div>
-          </div>
-        </div>
-      </section>
-
-      {/* Page 2: Services Section Updated to 6 Icons */}
-      <section className="py-24 px-6 max-w-7xl mx-auto">
-        <div className="text-center mb-16 space-y-4">
-          <h2 className="text-4xl md:text-5xl font-bold italic tracking-tight">خدماتنا الإبداعية</h2>
-          <div className="w-24 h-1 bg-amber-500 mx-auto rounded-full"></div>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="space-y-8">
-            <div className="space-y-6">
-              <p className="text-neutral-400 leading-relaxed text-xl">
-                في <span className="text-white font-bold underline decoration-amber-500 underline-offset-8">Double M Studio</span>، ندمج الفن بالتكنولوجيا لنصنع لك حضوراً رقمياً لا يُنسى.
-              </p>
-              
-              <div className="bg-neutral-900/40 border border-neutral-800 p-6 rounded-3xl space-y-4">
-                <div className="flex items-center gap-3 text-amber-500">
-                  <Zap className="w-5 h-5" />
-                  <h3 className="font-bold">ما الذي يميزنا؟</h3>
-                </div>
-                <p className="text-neutral-500 text-sm leading-relaxed">
-                  نحن لا نقوم بالنشر فقط، بل نقوم بإخراج كل قطعة محتوى كأنها فيلم قصير، مع استهداف ذكي يضمن وصولك للجمهور الصحيح عبر الهاشتاجات المدروسة والجدولة الدقيقة.
-                </p>
-              </div>
-
-              <div className="bg-neutral-900/50 border border-neutral-800 p-8 rounded-3xl backdrop-blur-md">
-                <div className="flex items-start gap-4">
-                  <Target className="w-6 h-6 text-amber-500 mt-1" />
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">الميزانية الإعلانية الممولة:</h3>
-                    <p className="text-neutral-400 text-sm mb-4">يتم تحديدها بناءً على أهدافك وتطلعاتك بشكل منفصل.</p>
-                    <span className="bg-amber-500/10 text-amber-500 px-4 py-2 rounded-xl border border-amber-500/20 font-mono text-xs">
-                      تبدأ من 1,500 ريال شهرياً
-                    </span>
-                  </div>
-                </div>
-              </div>
+        <div class="absolute bottom-10 animate-bounce">
+            <div class="w-6 h-10 border-2 border-neutral-700 rounded-full flex justify-center p-1">
+                <div class="w-1 h-2 bg-neutral-500 rounded-full"></div>
             </div>
-          </div>
-
-          {/* Grid of 6 Icons */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {services.map((item, idx) => (
-              <div key={idx} className="bg-neutral-900 border border-neutral-800 rounded-3xl p-6 flex flex-col items-center text-center hover:border-amber-500/40 hover:bg-neutral-800/50 transition-all group cursor-default shadow-lg">
-                <div className="mb-4 p-4 bg-neutral-800 rounded-2xl group-hover:scale-110 group-hover:bg-amber-500 group-hover:text-black transition-all">
-                  {item.icon}
-                </div>
-                <h4 className="font-bold text-sm text-white mb-1">{item.title}</h4>
-                <p className="text-[10px] text-neutral-500 uppercase tracking-widest">{item.desc}</p>
-              </div>
-            ))}
-          </div>
         </div>
-      </section>
+    </section>
 
-      {/* Page 3, 4, 5: Packages */}
-      <section className="py-24 px-6 bg-neutral-900/20">
-        <div className="max-w-7xl mx-auto text-center mb-16">
-          <h2 className="text-5xl font-black mb-4 tracking-tighter">باقات الاستوديو</h2>
-          <p className="text-neutral-500 italic">ارتقِ بعلامتك التجارية إلى المستوى السينمائي</p>
+    <!-- Page 2: Services Section (6 Icons) -->
+    <section class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-16 space-y-4">
+            <h2 class="text-4xl md:text-5xl font-bold italic tracking-tight">خدماتنا الإبداعية</h2>
+            <div class="w-24 h-1 bg-amber-500 mx-auto rounded-full"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {packages.map((pkg, idx) => (
-            <div 
-              key={idx} 
-              className={`relative bg-neutral-900 border border-neutral-800 rounded-[2.5rem] p-8 flex flex-col transition-all hover:scale-[1.02] hover:border-neutral-700 overflow-hidden group ${idx === 1 ? 'ring-2 ring-amber-500/20' : ''}`}
-            >
-              {idx === 1 && (
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-amber-500 text-black px-6 py-1 text-[10px] font-black rounded-b-xl uppercase tracking-widest">
-                  الأكثر طلباً
-                </div>
-              )}
-              
-              <div className="mb-8">
-                <div className="mb-4 inline-block p-4 bg-neutral-800 rounded-2xl">
-                  {pkg.icon}
-                </div>
-                <h3 className="text-2xl font-bold mb-2">{pkg.title}</h3>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-4xl font-black text-white">{pkg.price}</span>
-                  <span className="text-neutral-500 text-sm">ريال / شهرياً</span>
-                </div>
-              </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="space-y-8">
+                <div class="space-y-6 text-right">
+                    <p class="text-neutral-400 leading-relaxed text-xl">
+                        في <span class="text-white font-bold underline decoration-amber-500 underline-offset-8">Double M Studio</span>، ندمج الفن بالتكنولوجيا لنصنع لك حضوراً رقمياً لا يُنسى.
+                    </p>
+                    
+                    <div class="bg-neutral-900/40 border border-neutral-800 p-6 rounded-3xl space-y-4 text-right">
+                        <div class="flex items-center gap-3 text-amber-500">
+                            <i data-lucide="zap" class="w-5 h-5"></i>
+                            <h3 class="font-bold">ما الذي يميزنا؟</h3>
+                        </div>
+                        <p class="text-neutral-500 text-sm leading-relaxed">
+                            نحن لا نقوم بالنشر فقط، بل نقوم بإخراج كل قطعة محتوى كأنها فيلم قصير، مع استهداف ذكي يضمن وصولك للجمهور الصحيح عبر الهاشتاجات المدروسة والجدولة الدقيقة.
+                        </p>
+                    </div>
 
-              <div className="space-y-4 flex-grow mb-10">
-                {pkg.features.map((feature, fIdx) => (
-                  <div key={fIdx} className="flex items-start gap-3 group/item">
-                    <CheckCircle2 className="w-5 h-5 text-neutral-600 group-hover/item:text-amber-500 transition-colors mt-0.5 shrink-0" />
-                    <span className="text-neutral-400 text-sm leading-snug group-hover/item:text-neutral-200 transition-colors">
-                      {feature}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              <button className={`w-full py-4 rounded-2xl font-bold transition-all border ${idx === 1 ? 'bg-white text-black border-white' : 'bg-transparent text-white border-neutral-700 hover:bg-neutral-800'}`}>
-                اختر الباقة
-              </button>
+                    <div class="bg-neutral-900/50 border border-neutral-800 p-8 rounded-3xl glass-effect text-right">
+                        <div class="flex items-start gap-4">
+                            <i data-lucide="target" class="w-6 h-6 text-amber-500 mt-1"></i>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">الميزانية الإعلانية الممولة:</h3>
+                                <p class="text-neutral-400 text-sm mb-4">يتم تحديدها بناءً على أهدافك وتطلعاتك بشكل منفصل.</p>
+                                <span class="bg-amber-500/10 text-amber-500 px-4 py-2 rounded-xl border border-amber-500/20 font-mono text-xs">
+                                    تبدأ من 1,500 ريال شهرياً
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          ))}
-        </div>
-      </section>
 
-      {/* Page 6: Contact & Footer */}
-      <footer className="py-24 px-6 border-t border-neutral-800 relative overflow-hidden">
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-amber-500/5 blur-[100px] rounded-full translate-x-1/2 translate-y-1/2"></div>
+            <!-- Grid of 6 Icons -->
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div class="service-card bg-neutral-900 border border-neutral-800 rounded-3xl p-6 flex flex-col items-center text-center hover:border-amber-500/40 hover:bg-neutral-800/50 transition-all group cursor-default shadow-lg">
+                    <div class="mb-4 p-4 bg-neutral-800 rounded-2xl group-hover:scale-110 group-hover:bg-amber-500 group-hover:text-black transition-all">
+                        <i data-lucide="camera" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="font-bold text-sm text-white mb-1">تصوير احترافي</h4>
+                    <p class="text-[10px] text-neutral-500 uppercase tracking-widest">جودة 4K سينمائية</p>
+                </div>
+
+                <div class="service-card bg-neutral-900 border border-neutral-800 rounded-3xl p-6 flex flex-col items-center text-center hover:border-amber-500/40 hover:bg-neutral-800/50 transition-all group cursor-default shadow-lg">
+                    <div class="mb-4 p-4 bg-neutral-800 rounded-2xl group-hover:scale-110 group-hover:bg-amber-500 group-hover:text-black transition-all">
+                        <i data-lucide="clapperboard" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="font-bold text-sm text-white mb-1">إخراج فني</h4>
+                    <p class="text-[10px] text-neutral-500 uppercase tracking-widest">رؤية إبداعية فريدة</p>
+                </div>
+
+                <div class="service-card bg-neutral-900 border border-neutral-800 rounded-3xl p-6 flex flex-col items-center text-center hover:border-amber-500/40 hover:bg-neutral-800/50 transition-all group cursor-default shadow-lg">
+                    <div class="mb-4 p-4 bg-neutral-800 rounded-2xl group-hover:scale-110 group-hover:bg-amber-500 group-hover:text-black transition-all">
+                        <i data-lucide="video" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="font-bold text-sm text-white mb-1">فيديوهات قصيرة</h4>
+                    <p class="text-[10px] text-neutral-500 uppercase tracking-widest">Reels & TikTok</p>
+                </div>
+
+                <div class="service-card bg-neutral-900 border border-neutral-800 rounded-3xl p-6 flex flex-col items-center text-center hover:border-amber-500/40 hover:bg-neutral-800/50 transition-all group cursor-default shadow-lg">
+                    <div class="mb-4 p-4 bg-neutral-800 rounded-2xl group-hover:scale-110 group-hover:bg-amber-500 group-hover:text-black transition-all">
+                        <i data-lucide="hash" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="font-bold text-sm text-white mb-1">هاشتاجات ذكية</h4>
+                    <p class="text-[10px] text-neutral-500 uppercase tracking-widest">ظهور في الـ Explore</p>
+                </div>
+
+                <div class="service-card bg-neutral-900 border border-neutral-800 rounded-3xl p-6 flex flex-col items-center text-center hover:border-amber-500/40 hover:bg-neutral-800/50 transition-all group cursor-default shadow-lg">
+                    <div class="mb-4 p-4 bg-neutral-800 rounded-2xl group-hover:scale-110 group-hover:bg-amber-500 group-hover:text-black transition-all">
+                        <i data-lucide="trending-up" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="font-bold text-sm text-white mb-1">تحليل الترندات</h4>
+                    <p class="text-[10px] text-neutral-500 uppercase tracking-widest">مواكبة السوق</p>
+                </div>
+
+                <div class="service-card bg-neutral-900 border border-neutral-800 rounded-3xl p-6 flex flex-col items-center text-center hover:border-amber-500/40 hover:bg-neutral-800/50 transition-all group cursor-default shadow-lg">
+                    <div class="mb-4 p-4 bg-neutral-800 rounded-2xl group-hover:scale-110 group-hover:bg-amber-500 group-hover:text-black transition-all">
+                        <i data-lucide="clock" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="font-bold text-sm text-white mb-1">جدولة ونشر</h4>
+                    <p class="text-[10px] text-neutral-500 uppercase tracking-widest">في أوقات الذروة</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 3, 4, 5: Packages -->
+    <section id="packages" class="py-24 px-6 bg-neutral-900/20">
+        <div class="max-w-7xl mx-auto text-center mb-16">
+            <h2 class="text-5xl font-black mb-4 tracking-tighter">باقات الاستوديو</h2>
+            <p class="text-neutral-500 italic text-right md:text-center">ارتقِ بعلامتك التجارية إلى المستوى السينمائي</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            <!-- Silver Package -->
+            <div class="relative bg-neutral-900 border border-neutral-800 rounded-[2.5rem] p-8 flex flex-col transition-all hover:scale-[1.02] hover:border-neutral-700 overflow-hidden group">
+                <div class="mb-8 text-right">
+                    <div class="mb-4 inline-block p-4 bg-neutral-800 rounded-2xl">
+                        <i data-lucide="award" class="w-8 h-8 text-slate-300"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">الباقة الفضية</h3>
+                    <div class="flex items-baseline gap-1 justify-end">
+                        <span class="text-4xl font-black text-white">2,000</span>
+                        <span class="text-neutral-500 text-sm">ريال / شهرياً</span>
+                    </div>
+                </div>
+                <div class="space-y-4 flex-grow mb-10 text-right">
+                    <div class="flex items-start gap-3 group/item">
+                        <i data-lucide="check-circle-2" class="w-5 h-5 text-neutral-600 group-hover/item:text-amber-500 transition-colors mt-0.5 shrink-0"></i>
+                        <span class="text-neutral-400 text-sm">تقييم أولي للوضع الحالي للحساب</span>
+                    </div>
+                    <div class="flex items-start gap-3 group/item">
+                        <i data-lucide="check-circle-2" class="w-5 h-5 text-neutral-600 group-hover/item:text-amber-500 transition-colors mt-0.5 shrink-0"></i>
+                        <span class="text-neutral-400 text-sm">رسم استراتيجية محتوى أساسية</span>
+                    </div>
+                    <div class="flex items-start gap-3 group/item">
+                        <i data-lucide="check-circle-2" class="w-5 h-5 text-neutral-600 group-hover/item:text-amber-500 transition-colors mt-0.5 shrink-0"></i>
+                        <span class="text-neutral-400 text-sm">تصميم ونشر 12 منشور شهرياً</span>
+                    </div>
+                    <div class="flex items-start gap-3 group/item">
+                        <i data-lucide="check-circle-2" class="w-5 h-5 text-neutral-600 group-hover/item:text-amber-500 transition-colors mt-0.5 shrink-0"></i>
+                        <span class="text-neutral-400 text-sm">كتابة المحتوى الإبداعي (Captions)</span>
+                    </div>
+                    <div class="flex items-start gap-3 group/item">
+                        <i data-lucide="check-circle-2" class="w-5 h-5 text-neutral-600 group-hover/item:text-amber-500 transition-colors mt-0.5 shrink-0"></i>
+                        <span class="text-neutral-400 text-sm">إدارة الحملات الإعلانية الممولة</span>
+                    </div>
+                    <div class="flex items-start gap-3 group/item">
+                        <i data-lucide="check-circle-2" class="w-5 h-5 text-neutral-600 group-hover/item:text-amber-500 transition-colors mt-0.5 shrink-0"></i>
+                        <span class="text-neutral-400 text-sm">تقرير أداء شهري مبسط</span>
+                    </div>
+                    <div class="flex items-start gap-3 group/item font-bold text-amber-500">
+                        <i data-lucide="check-circle-2" class="w-5 h-5 mt-0.5 shrink-0"></i>
+                        <span class="text-sm">المنصات: Instagram</span>
+                    </div>
+                </div>
+                <button class="w-full py-4 rounded-2xl font-bold bg-transparent text-white border border-neutral-700 hover:bg-neutral-800 transition-all">اختر الباقة</button>
+            </div>
+
+            <!-- Gold Package -->
+            <div class="relative bg-neutral-900 border border-neutral-800 rounded-[2.5rem] p-8 flex flex-col transition-all hover:scale-[1.02] hover:border-neutral-700 overflow-hidden group ring-2 ring-amber-500/20 shadow-2xl shadow-amber-500/5">
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 bg-amber-500 text-black px-6 py-1 text-[10px] font-black rounded-b-xl uppercase tracking-widest">الأكثر طلباً</div>
+                <div class="mb-8 text-right">
+                    <div class="mb-4 inline-block p-4 bg-neutral-800 rounded-2xl">
+                        <i data-lucide="star" class="w-8 h-8 text-amber-400"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">الباقة الذهبية</h3>
+                    <div class="flex items-baseline gap-1 justify-end">
+                        <span class="text-4xl font-black text-white">3,500</span>
+                        <span class="text-neutral-500 text-sm">ريال / شهرياً</span>
+                    </div>
+                </div>
+                <div class="space-y-4 flex-grow mb-10 text-right">
+                    <div class="flex items-start gap-3 group/item font-bold text-amber-500">
+                        <i data-lucide="check-circle-2" class="w-5 h-5 mt-0.5 shrink-0"></i>
+                        <span class="text-sm">جميع مميزات الباقة الفضية</span>
+                    </div>
+                    <div class="flex items-start gap-3 group/item">
+                        <i data-lucide="check-circle-2" class="w-5 h-5 text-neutral-600 group-hover/item:text-amber-500 transition-colors mt-0.5 shrink-0"></i>
+                        <span class="text-neutral-400 text-sm">دراسة وتحليل للمنافسين</span>
+                    </div>
+                    <div class="flex items-start gap-3 group/item">
+                        <i data-lucide="check-circle-2" class="w-5 h-5 text-neutral-600 group-hover/item:text-amber-500 transition-colors mt-0.5 shrink-0"></i>
+                        <span class="text-neutral-400 text-sm">تصميم ونشر 18 منشور (صور وفيديو)</span>
+                    </div>
+                    <div class="flex items-start gap-3 group/item">
+                        <i data-lucide="check-circle-2" class="w-5 h-5 text-neutral-600 group-hover/item:text-amber-500 transition-colors mt-0.5 shrink-0"></i>
+                        <span class="text-neutral-400 text-sm">خطة تسويقية شهرية + تقويم نشر</span>
+                    </div>
+                    <div class="flex items-start gap-3 group/item font-bold text-amber-500">
+                        <i data-lucide="check-circle-2" class="w-5 h-5 mt-0.5 shrink-0"></i>
+                        <span class="text-sm">المنصات: Instagram + TikTok</span>
+                    </div>
+                </div>
+                <button class="w-full py-4 rounded-2xl font-bold bg-white text-black border border-white transition-all">اختر الباقة</button>
+            </div>
+
+            <!-- Diamond Package -->
+            <div class="relative bg-neutral-900 border border-neutral-800 rounded-[2.5rem] p-8 flex flex-col transition-all hover:scale-[1.02] hover:border-neutral-700 overflow-hidden group">
+                <div class="mb-8 text-right">
+                    <div class="mb-4 inline-block p-4 bg-neutral-800 rounded-2xl">
+                        <i data-lucide="gem" class="w-8 h-8 text-cyan-300"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">الباقة الماسية</h3>
+                    <div class="flex items-baseline gap-1 justify-end">
+                        <span class="text-4xl font-black text-white">4,000</span>
+                        <span class="text-neutral-500 text-sm">ريال / شهرياً</span>
+                    </div>
+                </div>
+                <div class="space-y-4 flex-grow mb-10 text-right">
+                    <div class="flex items-start gap-3 group/item font-bold text-amber-500">
+                        <i data-lucide="check-circle-2" class="w-5 h-5 mt-0.5 shrink-0"></i>
+                        <span class="text-sm">جميع مميزات الباقة الذهبية</span>
+                    </div>
+                    <div class="flex items-start gap-3 group/item">
+                        <i data-lucide="check-circle-2" class="w-5 h-5 text-neutral-600 group-hover/item:text-amber-500 transition-colors mt-0.5 shrink-0"></i>
+                        <span class="text-neutral-400 text-sm">تصميم ونشر 24 منشور شهرياً</span>
+                    </div>
+                    <div class="flex items-start gap-3 group/item">
+                        <i data-lucide="check-circle-2" class="w-5 h-5 text-neutral-600 group-hover/item:text-amber-500 transition-colors mt-0.5 shrink-0"></i>
+                        <span class="text-neutral-400 text-sm">تصاميم احترافية للقصص والهايلايت</span>
+                    </div>
+                    <div class="flex items-start gap-3 group/item">
+                        <i data-lucide="check-circle-2" class="w-5 h-5 text-neutral-600 group-hover/item:text-amber-500 transition-colors mt-0.5 shrink-0"></i>
+                        <span class="text-neutral-400 text-sm">إدارة كاملة للمنصات (تفاعل ونشر)</span>
+                    </div>
+                    <div class="flex items-start gap-3 group/item font-bold text-amber-500">
+                        <i data-lucide="check-circle-2" class="w-5 h-5 mt-0.5 shrink-0"></i>
+                        <span class="text-sm">المنصات: حتى 3 منصات</span>
+                    </div>
+                </div>
+                <button class="w-full py-4 rounded-2xl font-bold bg-transparent text-white border border-neutral-700 hover:bg-neutral-800 transition-all">اختر الباقة</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 6: Contact & Footer -->
+    <footer class="py-24 px-6 border-t border-neutral-800 relative overflow-hidden">
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-amber-500/5 blur-[100px] rounded-full translate-x-1/2 translate-y-1/2"></div>
         
-        <div className="max-w-4xl mx-auto text-center space-y-12 relative z-10">
-          <div className="space-y-4">
-            <h2 className="text-6xl font-black italic tracking-tighter">Thank You</h2>
-            <p className="text-2xl text-neutral-400 font-light italic">شكراً لثقتكم في إبداعنا</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <a href="tel:0532173655" className="flex items-center gap-6 p-6 bg-neutral-900 border border-neutral-800 rounded-3xl hover:border-white transition-all group">
-              <div className="p-4 bg-neutral-800 rounded-2xl group-hover:bg-white group-hover:text-black transition-all">
-                <Phone className="w-6 h-6" />
-              </div>
-              <div className="text-right">
-                <span className="block text-[10px] text-neutral-500 uppercase tracking-widest mb-1">اتصال هاتفي</span>
-                <span className="text-xl font-bold tracking-wider">0532173655</span>
-              </div>
-            </a>
-
-            <a href="mailto:hamoodmoaaz@gmail.com" className="flex items-center gap-6 p-6 bg-neutral-900 border border-neutral-800 rounded-3xl hover:border-white transition-all group">
-              <div className="p-4 bg-neutral-800 rounded-2xl group-hover:bg-white group-hover:text-black transition-all">
-                <Mail className="w-6 h-6" />
-              </div>
-              <div className="text-right">
-                <span className="block text-[10px] text-neutral-500 uppercase tracking-widest mb-1">البريد الإلكتروني</span>
-                <span className="text-lg font-medium break-all">hamoodmoaaz@gmail.com</span>
-              </div>
-            </a>
-          </div>
-
-          <div className="pt-12 border-t border-neutral-900 flex flex-col md:flex-row justify-between items-center gap-8">
-            <div className="flex items-center gap-4">
-              <img 
-                src={logoSrc} 
-                alt="Logo" 
-                className="w-12 h-12 rounded-full object-contain bg-black border border-neutral-800 shadow-lg shadow-amber-500/5"
-              />
-              <div className="text-2xl font-black tracking-tighter">Double M Studio</div>
+        <div class="max-w-4xl mx-auto text-center space-y-12 relative z-10">
+            <div class="space-y-4">
+                <h2 class="text-6xl font-black italic tracking-tighter uppercase">Thank You</h2>
+                <p class="text-2xl text-neutral-400 font-light italic">شكراً لثقتكم في إبداعنا</p>
             </div>
-            <div className="flex gap-4">
-              <div className="w-12 h-12 rounded-full border border-neutral-800 flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all cursor-pointer">
-                <Instagram className="w-6 h-6" />
-              </div>
-              <div className="w-12 h-12 rounded-full border border-neutral-800 flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all cursor-pointer">
-                <Send className="w-6 h-6" />
-              </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <a href="tel:0532173655" class="flex items-center gap-6 p-6 bg-neutral-900 border border-neutral-800 rounded-3xl hover:border-white transition-all group text-right">
+                    <div class="p-4 bg-neutral-800 rounded-2xl group-hover:bg-white group-hover:text-black transition-all">
+                        <i data-lucide="phone" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <span class="block text-[10px] text-neutral-500 uppercase tracking-widest mb-1">اتصال هاتفي</span>
+                        <span class="text-xl font-bold tracking-wider">0532173655</span>
+                    </div>
+                </a>
+
+                <a href="mailto:hamoodmoaaz@gmail.com" class="flex items-center gap-6 p-6 bg-neutral-900 border border-neutral-800 rounded-3xl hover:border-white transition-all group text-right">
+                    <div class="p-4 bg-neutral-800 rounded-2xl group-hover:bg-white group-hover:text-black transition-all">
+                        <i data-lucide="mail" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <span class="block text-[10px] text-neutral-500 uppercase tracking-widest mb-1">البريد الإلكتروني</span>
+                        <span class="text-lg font-medium break-all">hamoodmoaaz@gmail.com</span>
+                    </div>
+                </a>
             </div>
-            <p className="text-neutral-600 text-[10px] tracking-widest uppercase">© 2024 Double M Studio - Cinematic Experience</p>
-          </div>
+
+            <div class="pt-12 border-t border-neutral-900 flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="flex items-center gap-4">
+                    <img 
+                        src="IMG_2601.jpeg" 
+                        alt="Logo" 
+                        class="w-12 h-12 rounded-full object-contain bg-black border border-neutral-800 shadow-lg shadow-amber-500/5"
+                        onerror="this.style.display='none'"
+                    >
+                    <div class="text-2xl font-black tracking-tighter">Double M Studio</div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="w-12 h-12 rounded-full border border-neutral-800 flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all cursor-pointer">
+                        <i data-lucide="instagram" class="w-6 h-6"></i>
+                    </div>
+                    <div class="w-12 h-12 rounded-full border border-neutral-800 flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all cursor-pointer">
+                        <i data-lucide="send" class="w-6 h-6"></i>
+                    </div>
+                </div>
+                <p class="text-neutral-600 text-[10px] tracking-widest uppercase">© 2024 Double M Studio - Cinematic Experience</p>
+            </div>
         </div>
-      </footer>
-    </div>
-  );
-};
+    </footer>
 
-export default App;
+    <script>
+        // تفعيل الأيقونات
+        lucide.createIcons();
+
+        // إضافة تأثير تمرير سلس (Smooth Scroll)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
